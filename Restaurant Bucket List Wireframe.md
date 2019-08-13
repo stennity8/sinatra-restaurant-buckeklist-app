@@ -3,6 +3,7 @@
   - Users will be able to see **ALL** reviews
   - Users will be able to see, edit, delete all of their reviews
   - Users will be able to add Restaurants to their BucketList after viewing other user reviews
+      - Users will first add restaurants to their BucketList.  Once they have added them to the bucket list they can review them.
   - User's restaurants on their Bucket List will be removed once they write a review
 
 ## User 
@@ -10,7 +11,7 @@
 - e-mail
 - username
 - password-digest
-- BucketList -array of restaurants that have not yet been reviewed by user
+- BucketList -boolean to track whether the restaurants are on the bucket list or have been reviewed.
 
 ### Associations
 - has_many :reviews
