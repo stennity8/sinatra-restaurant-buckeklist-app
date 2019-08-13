@@ -7,7 +7,6 @@
 
 ## User 
 ### Attributes
-- name
 - e-mail
 - username
 - password-digest
