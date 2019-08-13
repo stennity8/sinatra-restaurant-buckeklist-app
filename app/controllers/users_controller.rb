@@ -10,10 +10,16 @@ class UsersController < ApplicationController
   end
 
   post '/register' do
-    binding.pry
-    @user = User.create(params)
-    if @user.id == nil 
-      flash[:message] = "Invalid user credentials.  Please try again."
+    # binding.pry
+    # Check password and confirm password match
+    if params[:user][:password] != params[:confirm_password]
+      flash[:errors] = "Your passwords do not match.  Please try again."
+      redirect '/register'
+    end
+
+    @user = User.create(params[:user])
+    if @user.valid? 
+      flash[:errors] = "Invalid user credentials.  Please try again."
       redirect '/register'
     else
       session[:user_id] = @user.id
