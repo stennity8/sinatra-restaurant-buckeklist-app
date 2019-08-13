@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   post '/register' do
-    # binding.pry
+    binding.pry
     @user = User.create(params)
     if @user.id == nil 
       flash[:message] = "Invalid user credentials.  Please try again."
