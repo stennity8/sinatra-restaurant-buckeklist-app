@@ -2,12 +2,12 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews
   get "/reviews" do
-    erb :"/reviews/index.html"
+    erb :"/reviews/index"
   end
 
   # GET: /reviews/new
   get "/reviews/new" do
-    erb :"/reviews/new.html"
+    erb :"/reviews/new"
   end
 
   # POST: /reviews
@@ -17,12 +17,12 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews/5
   get "/reviews/:id" do
-    erb :"/reviews/show.html"
+    erb :"/reviews/show"
   end
 
   # GET: /reviews/5/edit
   get "/reviews/:id/edit" do
-    erb :"/reviews/edit.html"
+    erb :"/reviews/edit"
   end
 
   # PATCH: /reviews/5
