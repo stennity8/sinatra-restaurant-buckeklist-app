@@ -14,11 +14,14 @@ class UsersController < ApplicationController
       flash[:errors] = "Your passwords do not match.  Please try again."
       redirect '/register'
     end
-    
+    # binding.pry
     # Create user and then validate provided input.  Redirect if not valid.
     @user = User.create(params[:user])
     if @user.invalid? 
-      flash[:errors] = "Invalid user credentials.  Please try again."
+      # Get error messages using helper function and then flash to user.
+      error_messages(@user)
+      flash[:errors] = @error_messages
+
       redirect '/register'
     else
       session[:user_id] = @user.id

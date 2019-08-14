@@ -16,12 +16,23 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    # Get current user
     def current_user(session) 
       @user = User.find_by_id(session[:user_id])
     end
   
+    # Check if user logged in
     def is_logged_in?(session)
       !!session[:user_id]
+    end
+
+    # Get error messages from validation.
+    def error_messages(instance)
+      @error_messages = instance.errors.messages.map do |k,v|
+        k = k.capitalize
+        v = v[0]
+        "#{k} #{v}. "
+      end.join(" ")
     end
   end
 
