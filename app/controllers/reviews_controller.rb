@@ -14,8 +14,14 @@ class ReviewsController < ApplicationController
   # POST: /reviews
   post "/reviews" do
     binding.pry
-    
+    if is_logged_in?(session)
+      @user = current_user(session)
+    else
+      flash[:message] = "You must be logged in to create a review."
+      redirect "/login"
+    end
 
+    
     redirect "/reviews"
   end
 
