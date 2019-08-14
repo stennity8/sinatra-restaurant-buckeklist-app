@@ -13,21 +13,46 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-  <body>
-      <div class="nav">
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <% if is_logged_in?(session) %>
+
+        <% else%>
+          <li class="nav-item active">
+            <a class="nav-link" href="/login">Log In </a>
+          </li>          
+          <li class="nav-item active">
+            <a class="nav-link" href="/register">Register </a>
+          </li>
+        <% end %>
+      </ul>
       <% if is_logged_in?(session) %>
-        <a class="nav-link" href="/logout">Log Out</a>
-      <% else%>
-        <a class="nav-link" href="/login">Log In</a>
-        <a class="nav-link" href="/register">Register</a>
+      <p class="navbar-text"><span class="welcome">Welcome, <%= User.find(session[:user_id]).username %></span> <br>
+        <a href="/logout" class="navbar-link">Logout</a>
+      </p>
       <% end %>
     </div>
+  </nav>
+
+  <body>
+      <div class="nav">
+      
+    </div>
+
+    
     <div class="wrapper">
     
       <% flash.keys.each do |type| %>
         <div data-alert class="flash <%= type %> alert-box radius alert alert-danger" role="alert">
           <%= flash[type] %>
-          <!--<a href="#" class="close">&times;</a>-->
         </div>
       <% end %>
       

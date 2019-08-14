@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
   end
 
   post '/login' do
-    binding.pry
     @user = User.find_by(username: params[:username])
 
     if @user && @user.authenticate(params[:password])
@@ -23,10 +22,11 @@ class SessionsController < ApplicationController
 
   get '/logout' do
     if is_logged_in?(session)
-      session.clear
+      session.destroy
       redirect "/login"
     else
-      redirect "/"
+      flash[:message] = "You're not logged in."
+      redirect "/login"
     end
    end
 

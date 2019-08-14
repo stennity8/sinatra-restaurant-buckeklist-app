@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       flash[:errors] = "Your passwords do not match.  Please try again."
       redirect '/register'
     end
-    # binding.pry
+   
     # Create user and then validate provided input.  Redirect if not valid.
     @user = User.create(params[:user])
     if @user.invalid? 
