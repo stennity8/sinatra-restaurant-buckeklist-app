@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews
   get "/reviews" do
+
     erb :"/reviews/index"
   end
 
@@ -12,6 +13,9 @@ class ReviewsController < ApplicationController
 
   # POST: /reviews
   post "/reviews" do
+    binding.pry
+    
+
     redirect "/reviews"
   end
 

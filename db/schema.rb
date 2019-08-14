@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20190812221453) do
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "cuisine"
+    t.string   "address"
     t.string   "city"
     t.string   "state"
     t.integer  "zip_code"
@@ -25,8 +26,6 @@ ActiveRecord::Schema.define(version: 20190812221453) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
-    t.string   "good"
-    t.string   "bad"
     t.string   "recommendation"
     t.integer  "user_id"
     t.integer  "restaurant_id"
