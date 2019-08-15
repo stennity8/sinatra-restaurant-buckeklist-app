@@ -2,9 +2,11 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews
   get "/reviews" do
+    logged_in_verification
+    
     @user = current_user(session)
     @reviews = Review.all
-    
+
     erb :"/reviews/index"
   end
 
@@ -16,12 +18,7 @@ class ReviewsController < ApplicationController
   # POST: /reviews
   post "/reviews" do
     # Logged in verification
-    if is_logged_in?(session)
-      @user = current_user(session)
-    else
-      flash[:message] = "You must be logged in to create a review."
-      redirect "/login"
-    end
+    logged_in_verification
 
     # Create review and restaurant and verify they are valid. Redirect if invalid.
     review = Review.new(params[:review])
@@ -33,19 +30,18 @@ class ReviewsController < ApplicationController
       review.user_id = @user.id
       review.save
     else
+      # TODO: Set up error handling
       binding.pry
     end
     
     redirect "/user/#{@user.slug}"
   end
 
-  # GET: /reviews/5
-  get "/reviews/:id" do
-    erb :"/reviews/show"
-  end
 
   # GET: /reviews/5/edit
   get "/reviews/:id/edit" do
+    logged_in_verification
+
     erb :"/reviews/edit"
   end
 
@@ -53,6 +49,14 @@ class ReviewsController < ApplicationController
   patch "/reviews/:id" do
     redirect "/reviews/:id"
   end
+
+    # GET: /reviews/5
+    get "/reviews/:id" do
+
+
+      erb :"/reviews/show"
+    end
+  
 
   # DELETE: /reviews/5/delete
   delete "/reviews/:id/delete" do

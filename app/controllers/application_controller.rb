@@ -34,6 +34,16 @@ class ApplicationController < Sinatra::Base
         "#{k} #{v}. "
       end.join(" ")
     end
+
+    # Logged in verification with error message.
+    def logged_in_verification
+      if is_logged_in?(session)
+        @user = current_user(session)
+      else
+        flash[:message] = "You must be logged in to access that page."
+        redirect "/login"
+      end
+    end
   end
 
 end
