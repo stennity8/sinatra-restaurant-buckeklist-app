@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 
   # POST: /reviews
   post "/reviews" do
-    binding.pry
+    # Logged in verification
     if is_logged_in?(session)
       @user = current_user(session)
     else
@@ -21,8 +21,20 @@ class ReviewsController < ApplicationController
       redirect "/login"
     end
 
+    # Create review and restaurant and verify they are valid. Redirect if invalid.
+    review = Review.new(params[:review])
+    restaurant = Restaurant.new(params[:restaurant])
     
-    redirect "/reviews"
+    if review.valid? && restaurant.valid?
+      restaurant.save
+      review.restaurant_id = restaurant.id
+      review.user_id = @user.id
+      review.save
+    else
+      binding.pry
+    end
+    
+    redirect "/user/#{@user.slug}"
   end
 
   # GET: /reviews/5

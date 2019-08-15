@@ -1,1 +1,26 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @user.username %>'</h1>
+
+<h2>Reviews</h2>
+<div class="row">
+  <% @user_reviews.each do |review| %>
+  <div class="col-sm-4">
+    <div class="card h-100 d-inline-block" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><strong><%= review.restaurant.name %></strong></h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <address>
+            <%= review.restaurant.address %><br>
+            <%= review.restaurant.city %>, <%= review.restaurant.state %> <%= review.restaurant.zip_code %><br>
+          </address>
+        </h6>
+        <p><strong>Rating: <%= review.rating %> out of 5</strong></p>
+        <p class="card-text"><%= review.recommendation %></p>
+        <% if @user == current_user(session) %>
+        <a href="reviews/<%= review.id %>" class="card-link">Edit</a>
+        <% end %>
+      </div>
+    </div>
+    </div>
+  <% end %>
+</div>
+<!-- Bucket List Coming Soon -->

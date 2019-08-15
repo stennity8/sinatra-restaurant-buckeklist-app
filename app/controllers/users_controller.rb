@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
   get '/user/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    @user_restaurants = @user.restaurants
+    @user_reviews = @user.reviews
 
     erb :"/users/show"
   end
