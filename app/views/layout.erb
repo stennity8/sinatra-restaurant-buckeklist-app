@@ -43,8 +43,9 @@
         </ul>      
       </ul>
 
-        <p class="navbar-text mb-0"><span class="welcome">Welcome, <%= @user %></span> <br>
-          <a href="/logout" class="navbar-link">Logout</a>
+        <p class="navbar-text mb-0 pt-0 pb-0"><span class="welcome">Welcome, <%= @user %></span> <br>
+          <button class="btn btn-primary navbar-btn btn-sm" href="/logout">Logout</button>
+          <!--<a href="/logout" class="nav-item active align-self-center">Logout</a>-->
         </p>
       <% else %>
         <ul class="navbar-nav">

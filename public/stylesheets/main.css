@@ -146,3 +146,12 @@
 #inputRating {
   margin-left: 10px;
 }
+
+.navbar-text {
+  font-size: 0.9rem;
+}
+
+.btn-sm {
+  padding: 0.1rem .4rem;
+  font-size: 0.80rem;
+}
