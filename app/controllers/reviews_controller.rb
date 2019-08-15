@@ -50,6 +50,9 @@ class ReviewsController < ApplicationController
   # GET: /reviews/5/edit
   get "/reviews/:id/edit" do
     logged_in_verification
+    
+    @review = Review.find(params[:id])
+    @restaurant = @review.restaurant
 
     erb :"/reviews/edit"
   end
