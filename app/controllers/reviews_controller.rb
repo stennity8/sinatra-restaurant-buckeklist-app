@@ -22,12 +22,20 @@ class ReviewsController < ApplicationController
 
     # Create review and restaurant and verify they are valid. Redirect if invalid.
     review = Review.new(params[:review])
-    restaurant = Restaurant.new(params[:restaurant])
+    binding.pry
+    # Check if this is an existing restaurant.
+    if params[:restaurant][:creator_id] == nil
+      restaurant = Restaurant.new(params[:restaurant])
+    else
+      restaurant = Restaurant.find(params[:restaurant][:id])
+    end
+
     
     if review.valid? && restaurant.valid?
       restaurant.save
       review.restaurant_id = restaurant.id
       review.user_id = @user.id
+      
       review.save
     else
       if review.invalid?
@@ -49,8 +57,10 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews/5/edit
   get "/reviews/:id/edit" do
+
     logged_in_verification
-    
+    # Verify if Restaurant was created by user or if it will be uneditable
+    binding.pry
     @review = Review.find(params[:id])
     @restaurant = @review.restaurant
 
