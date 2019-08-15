@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+  get '/user/:slug' do
+
+    erb :"/users/show"
+  end
   
   get '/register' do
     if is_logged_in?(session)

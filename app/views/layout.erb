@@ -24,20 +24,53 @@
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <% if is_logged_in?(session) %>
+        <% @user = User.find(session[:user_id]).username %>  
+        <% @user_slug = User.find(session[:user_id]).slug %>  
+        
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/reviews">All Reviews </a>
+          </li>          
+          <li class="nav-item active">
+            <a class="nav-link" href="/restaurants">All Restaurants </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/user/<%= @user_slug %>"><%= @user %>'s Reviews & Restaurants</a>
+          </li>
+        </ul>      
 
-        <% else%>
+        <!--<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reviews
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/reviews">All Reviews</a>
+            <a class="dropdown-item" href="/user/<%= @user_slug %>"><%= @user %>'s Reviews</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Restaurants
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/restaurants">All Restaurants</a>          
+            <a class="dropdown-item" href="/user/<%= @user_slug %>"><%= @user %>'s Restaurants</a>
+          </div>
+        </li>-->
+      </ul>
+
+        <p class="navbar-text"><span class="welcome">Welcome, <%= @user %></span> <br>
+          <a href="/logout" class="navbar-link">Logout</a>
+        </p>
+      <% else %>
+        <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="/login">Log In </a>
           </li>          
           <li class="nav-item active">
             <a class="nav-link" href="/register">Register </a>
           </li>
-        <% end %>
-      </ul>
-      <% if is_logged_in?(session) %>
-      <p class="navbar-text"><span class="welcome">Welcome, <%= User.find(session[:user_id]).username %></span> <br>
-        <a href="/logout" class="navbar-link">Logout</a>
-      </p>
+        </ul>
       <% end %>
     </div>
   </nav>
