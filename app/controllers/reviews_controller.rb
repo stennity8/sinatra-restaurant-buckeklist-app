@@ -2,7 +2,9 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews
   get "/reviews" do
-
+    @user = current_user(session)
+    @reviews = Review.all
+    
     erb :"/reviews/index"
   end
 
