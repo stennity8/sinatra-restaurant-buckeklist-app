@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       flash[:message] = "You are already logged in."
       redirect '/reviews'
     end
+    
       erb :"/users/new"
   end
 

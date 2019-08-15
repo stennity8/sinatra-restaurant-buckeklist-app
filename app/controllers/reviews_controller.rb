@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   # GET: /reviews
   get "/reviews" do
     logged_in_verification
-    
+
     @user = current_user(session)
     @reviews = Review.all
 
@@ -30,8 +30,17 @@ class ReviewsController < ApplicationController
       review.user_id = @user.id
       review.save
     else
-      # TODO: Set up error handling
-      binding.pry
+      if review.invalid?
+        error_messages(review)
+        flash[:errors] = @error_messages
+      end
+
+      if restaurant.invalid?
+        error_messages(restaurant)
+        flash[:errors2] = @error_messages
+      end
+
+      redirect "reviews/new"
     end
     
     redirect "/user/#{@user.slug}"
