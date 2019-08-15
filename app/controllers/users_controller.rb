@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
 
   get '/user/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    @user_restaurants = @user.restaurants
-    @user_reviews = @user.reviews
+    logged_in_verification
 
+    # Verify user is authorized to access these reviews
+    if @user == User.find_by_slug(params[:slug])
+      @user_restaurants = @user.restaurants
+      @user_reviews = @user.reviews
+    else
+      flash[:message] = "You do not have access to that page."
+      redirect '/'
+    end
+    
     erb :"/users/show"
   end
   
