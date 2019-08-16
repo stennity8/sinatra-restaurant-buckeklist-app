@@ -155,3 +155,7 @@
   padding: 0.1rem .4rem;
   font-size: 0.80rem;
 }
+
+address {
+  margin-bottom: 0;
+}
