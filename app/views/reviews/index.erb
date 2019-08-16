@@ -17,7 +17,7 @@
           <p><strong>Rating: <%= review.rating %> out of 5</strong></p>
           <p class="card-text"><%= review.recommendation %></p>
           <% if @user.id == review.user_id %>
-          <a href="reviews/<%= review.id %>/edit" class="btn btn-primary mt-auto" role="button">Edit</a>
+          <a href="/reviews/<%= review.id %>/edit" class="btn btn-primary mt-auto" role="button">Edit</a>
           <% end %>
         </div>
       </div>

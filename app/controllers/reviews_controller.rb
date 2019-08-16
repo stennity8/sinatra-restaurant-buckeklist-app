@@ -69,13 +69,25 @@ class ReviewsController < ApplicationController
 
   # PATCH: /reviews/5
   patch "/reviews/:id" do
-    redirect "/reviews/:id"
+    @review = Review.find(params[:id])
+    @restaurant = @review.restaurant
+    # Check if user has access to update restaurant
+    if read_only
+      @review.update(params[:review])
+    else
+      @restaurant.update(params[:restaurant])
+      @review.update(params[:review])
+    end
+
+    redirect "/reviews/#{@review.id}"
   end
 
     # GET: /reviews/5
     get "/reviews/:id" do
-
-
+      logged_in_verification
+      @user = current_user(session)
+      @review = Review.find(params[:id])
+      
       erb :"/reviews/show"
     end
   

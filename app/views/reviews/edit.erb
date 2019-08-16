@@ -1,9 +1,11 @@
 <h1>Edit Restaurant Review</h1>
-<form action="/reviews" method="post">
+<form action="/reviews/<%= @review.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
   <div class="form-row">  
     <div class="form-group col-md-9">
       <label for="inputName">Restaurant's Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]" value="<% @restaurant.name %>" <%= read_only %>>
+      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]" value="<%= @restaurant.name %>" <%= read_only %>>
     </div>
 
     <div class="form-group col-md-3">

@@ -45,7 +45,7 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    # Check if Restaurant should be 'readonly'
+    # Check if Restaurant should be 'readonly' 
     def read_only
       if !@restaurant.creator_id == @review.user_id 
          "readonly"
