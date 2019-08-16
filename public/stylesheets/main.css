@@ -163,3 +163,7 @@ address {
 .navbar-text a.btn-primary{
   color: #fff;
 }
+
+div.row {
+  margin-bottom: 10px;
+}

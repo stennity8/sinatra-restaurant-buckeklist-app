@@ -27,6 +27,34 @@ class ReviewsController < ApplicationController
     erb :"/reviews/new_bucketlist"
   end
 
+  # This post is for reviews being added from the bucketlist.
+  post "/reviews/:id" do
+    # Logged in verification
+    logged_in_verification
+
+    # Create review verify it is valid. Redirect if invalid.
+    review = Review.new(params[:review])
+    restaurant = Restaurant.find(params[:id])
+    
+    if review.valid?
+      review.restaurant_id = restaurant.id
+      review.user_id = @user.id
+      review.save
+
+      # Delete restaurant from bucketlist
+      @user.bucketlists.find_by(restaurant.id).destroy
+    else
+      if review.invalid?
+        error_messages(review)
+        flash[:errors] = @error_messages
+      end
+
+      redirect "reviews/new/#{restaurant.id}"
+    end
+    
+    redirect "/user/#{@user.slug}"
+  end
+
   # POST: /reviews
   post "/reviews" do
     # Logged in verification

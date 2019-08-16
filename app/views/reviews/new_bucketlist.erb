@@ -1,5 +1,5 @@
 <h1>Create Review for Bucket List Restaurant</h1>
-<form action="/reviews" method="post">
+<form action="/reviews/<%= @restaurant.id %>" method="post">
   <div class="form-row">  
     <div class="form-group col-md-9">
       <label for="inputName">Restaurant's Name</label>
