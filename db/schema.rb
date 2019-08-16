@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20190815225546) do
     t.string   "recommendation"
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.boolean  "bucket_list",    default: true
+    t.boolean  "bucket_list",    default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end

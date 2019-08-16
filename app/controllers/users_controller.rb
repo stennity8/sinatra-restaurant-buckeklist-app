@@ -11,8 +11,23 @@ class UsersController < ApplicationController
       flash[:message] = "You do not have access to that page."
       redirect '/'
     end
+    binding.pry
     
     erb :"/users/show"
+  end
+
+  post '/user/:slug' do
+    logged_in_verification
+    
+    # Verify user is authorized to add to bucketlist
+    if @user == User.find_by_slug(params[:slug])
+      binding.pry
+      @user_restaurants = @user.restaurants
+      @user_reviews = @user.reviews
+    else
+      flash[:message] = "You do not have access to that page."
+      redirect '/'
+    end
   end
   
   get '/register' do

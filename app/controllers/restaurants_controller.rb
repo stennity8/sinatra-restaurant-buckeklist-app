@@ -5,6 +5,9 @@ class RestaurantsController < ApplicationController
     logged_in_verification
     @restaurants = Restaurant.all
 
+    # Slug username for 'Add to Bucket List' route
+    @user_slug = User.find(session[:user_id]).slug
+
     erb :"/restaurants/index"
   end
 
