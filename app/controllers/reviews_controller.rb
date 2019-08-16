@@ -12,7 +12,19 @@ class ReviewsController < ApplicationController
 
   # GET: /reviews/new
   get "/reviews/new" do
+    # Logged in verification
+    logged_in_verification
+    
     erb :"/reviews/new"
+  end
+
+  # This is for existing restaurant reviews coming from bucketlist
+  get "/reviews/new/:id" do
+    # Logged in verification
+    logged_in_verification
+    @restaurant = Restaurant.find(params[:id])
+
+    erb :"/reviews/new_bucketlist"
   end
 
   # POST: /reviews
@@ -22,9 +34,8 @@ class ReviewsController < ApplicationController
 
     # Create review and restaurant and verify they are valid. Redirect if invalid.
     review = Review.new(params[:review])
-    binding.pry
     # Check if this is an existing restaurant.
-    if params[:restaurant][:creator_id] == nil
+    if params[:restaurant][:creator_id].empty?
       restaurant = Restaurant.new(params[:restaurant])
     else
       restaurant = Restaurant.find(params[:restaurant][:id])
@@ -32,6 +43,7 @@ class ReviewsController < ApplicationController
 
     
     if review.valid? && restaurant.valid?
+      restaurant.creator_id = current_user(session).id
       restaurant.save
       review.restaurant_id = restaurant.id
       review.user_id = @user.id

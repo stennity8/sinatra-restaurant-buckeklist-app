@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       flash[:message] = "You do not have access to that page."
       redirect '/'
     end
-    binding.pry
+    # binding.pry
     
     erb :"/users/show"
   end
@@ -28,6 +28,8 @@ class UsersController < ApplicationController
       flash[:message] = "You do not have access to that page."
       redirect '/'
     end
+
+
   end
   
   get '/register' do

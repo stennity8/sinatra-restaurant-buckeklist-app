@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190815225546) do
+ActiveRecord::Schema.define(version: 20190816171723) do
+
+  create_table "bucketlists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +27,9 @@ ActiveRecord::Schema.define(version: 20190815225546) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip_code"
+    t.integer  "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "creator_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -30,9 +37,8 @@ ActiveRecord::Schema.define(version: 20190815225546) do
     t.string   "recommendation"
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.boolean  "bucket_list",    default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -9,7 +9,6 @@ task :remigrate do
   Rake::Task["db:rollback"].execute
   Rake::Task["db:rollback"].execute
   Rake::Task["db:migrate"].execute 
-  Rake::Task["db:seed"].execute
 end
 
 desc 'A Pry console'

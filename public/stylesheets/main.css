@@ -159,3 +159,7 @@
 address {
   margin-bottom: 0;
 }
+
+.navbar-text a.btn-primary{
+  color: #fff;
+}
