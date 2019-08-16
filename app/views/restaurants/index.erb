@@ -1,1 +1,25 @@
-<h1>This is the Model's index page.</h1>
+<h1>Restaurants</h1>
+
+<div class="container-flu">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+    <div class="col-xs-12 col-md-6 col-lg-4 mt-3">
+      <div class="card h-100 w-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title"><strong><%= restaurant.name %></strong></h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <address>
+              <%= restaurant.address %><br>
+              <%= restaurant.city %>, <%= restaurant.state %> <%= restaurant.zip_code %><br>
+            </address>
+          </h6>
+          <div class="text-nowrap">
+            <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary mt-auto" role="button">Reviews</a>
+            <a href="/reviews/<%= current_user(session).id %>" class="btn btn-secondary mt-auto" role="button">Add to Bucket List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
