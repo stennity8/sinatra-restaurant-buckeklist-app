@@ -8,8 +8,7 @@ class RestaurantsController < ApplicationController
     # Slug username for 'Add to Bucket List' route
     @user_slug = User.find(session[:user_id]).slug
     bucketlist_restaurants
-    reviewed_restaurants
-
+    
     erb :"/restaurants/index"
   end
 

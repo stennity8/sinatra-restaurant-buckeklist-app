@@ -60,7 +60,6 @@ class ApplicationController < Sinatra::Base
         @bucketlist << bucketlist.restaurant_id
       end
       @bucketlist
-      binding.pry
     end
   end
 
