@@ -60,9 +60,9 @@ class ReviewsController < ApplicationController
 
     logged_in_verification
     # Verify if Restaurant was created by user or if it will be uneditable
-    binding.pry
     @review = Review.find(params[:id])
     @restaurant = @review.restaurant
+    #@restaurant.creator_id == @review.user_id ? @read_only = false : @read_only = true
 
     erb :"/reviews/edit"
   end

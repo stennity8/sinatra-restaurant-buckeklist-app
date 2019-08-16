@@ -3,12 +3,12 @@
   <div class="form-row">  
     <div class="form-group col-md-9">
       <label for="inputName">Restaurant's Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]" value="<%= @restaurant.name %>">
+      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]" value="<% @restaurant.name %>" <%= read_only %>>
     </div>
 
     <div class="form-group col-md-3">
       <label for="inputCuisine">Cuisine</label>
-      <select id="inputCuisine" class="form-control" name="restaurant[cuisine]">
+      <select id="inputCuisine" class="form-control" name="restaurant[cuisine]" <%= read_only %>>
       <!--Dropdown preselection iteration-->
         <% cuisine_array = ["american", "chinese", "french", "greek", "indian", "italian", "japanese", "mediterranean", "mexican", "spanish", "thai", "other"]%>
         <% cuisine_array.each do |cuisine| %>
@@ -24,18 +24,18 @@
 
   <div class="form-group">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="restaurant[address]" value="<%= @restaurant.address %>">
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="restaurant[address]" value="<%= @restaurant.address %>" <%= read_only %>>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity" name="restaurant[city]" value="<%= @restaurant.city %>">
+      <input type="text" class="form-control" id="inputCity" name="restaurant[city]" value="<%= @restaurant.city %>" <%= read_only %>>
     </div>
 
     <div class="form-group col-md-4">
       <label for="inputState">State</label>
-      <select id="inputState" class="form-control" name="restaurant[state]">
+      <select id="inputState" class="form-control" name="restaurant[state]" <%= read_only %>>
       <!--Dropdown preselection iteration-->
               <% state_array = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",	"FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", \
                "LA", "MA", "MD", "ME", "MI", "MN", "MO" "MS", "MT", "NC", "NE", "NH", "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI", \
@@ -52,7 +52,7 @@
 
     <div class="form-group col-md-2">
       <label for="inputZip">Zip</label>
-      <input class="form-control" id="inputZip" name="restaurant[zip_code]" type="text" inputmode="numeric" pattern="(\d{5}([\-]\d{4})?)" value="<%= @restaurant.zip_code %>">
+      <input class="form-control" id="inputZip" name="restaurant[zip_code]" type="text" inputmode="numeric" pattern="(\d{5}([\-]\d{4})?)" value="<%= @restaurant.zip_code %>" <%= read_only %>>
     </div>
   </div>
 
