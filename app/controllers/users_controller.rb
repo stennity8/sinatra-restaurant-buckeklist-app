@@ -22,14 +22,13 @@ class UsersController < ApplicationController
     # Verify user is authorized to add to bucketlist
     if @user == User.find_by_slug(params[:slug])
       binding.pry
-      @user_restaurants = @user.restaurants
-      @user_reviews = @user.reviews
+      @bucketlist = Bucketlist.create(user_id: @user.id, restaurant_id: params[:bucketlist])
     else
       flash[:message] = "You do not have access to that page."
       redirect '/'
     end
 
-
+    redirect "/user/#{@user.slug}"
   end
   
   get '/register' do

@@ -17,7 +17,7 @@
               <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary mt-auto mr-1" role="button">Reviews</a>
               <% if restaurant.creator_id != current_user(session).id %>
                 <form action="/user/<%= @user_slug %>" method="post">
-                  <button class="btn btn-secondary mt-auto" name="bucketlist[]" type="submit" value="<%= restaurant.id %>">Add to Bucket List</button>
+                  <button class="btn btn-secondary mt-auto" name="bucketlist" type="submit" value="<%= restaurant.id %>">Add to Bucket List</button>
                 </form>
               <% end %>
             </div>
