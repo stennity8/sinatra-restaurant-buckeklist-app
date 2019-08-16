@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     
     # Verify user is authorized to add to bucketlist
     if @user == User.find_by_slug(params[:slug])
-      binding.pry
       @bucketlist = Bucketlist.create(user_id: @user.id, restaurant_id: params[:bucketlist])
     else
       flash[:message] = "You do not have access to that page."

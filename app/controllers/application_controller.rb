@@ -51,6 +51,16 @@ class ApplicationController < Sinatra::Base
          "readonly"
       end
     end
+
+    # Build array of bucketlist restaurants
+    def bucketlist_restaurants
+      @bucketlist = []
+      @user = current_user(session)
+      @user.bucketlists.each do |bucketlist|
+        @bucketlist << bucketlist.restaurant_id
+      end
+      @bucketlist
+    end
   end
 
 end
