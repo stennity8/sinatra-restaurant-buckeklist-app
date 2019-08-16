@@ -8,7 +8,7 @@
 
     <div class="form-group col-md-3">
       <label for="inputCuisine">Cuisine</label>
-      <select id="inputCuisine" class="form-control" name="restaurant[cuisine]" readonly>
+      <select id="inputCuisine" class="form-control" name="restaurant[cuisine]" disabled>
       <!--Dropdown preselection iteration-->
         <% cuisine_array = ["american", "chinese", "french", "greek", "indian", "italian", "japanese", "mediterranean", "mexican", "spanish", "thai", "other"]%>
         <% cuisine_array.each do |cuisine| %>
@@ -35,7 +35,7 @@
 
     <div class="form-group col-md-4">
       <label for="inputState">State</label>
-      <select id="inputState" class="form-control" name="restaurant[state]" readonly>
+      <select id="inputState" class="form-control" name="restaurant[state]" disabled>
       <!--Dropdown preselection iteration-->
               <% state_array = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",	"FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", \
                "LA", "MA", "MD", "ME", "MI", "MN", "MO" "MS", "MT", "NC", "NE", "NH", "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI", \

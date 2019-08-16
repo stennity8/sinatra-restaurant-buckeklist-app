@@ -47,8 +47,15 @@ class ApplicationController < Sinatra::Base
 
     # Check if Restaurant should be 'readonly' 
     def read_only
-      if !@restaurant.creator_id == @review.user_id 
+      if !(@restaurant.creator_id == @review.user_id) 
          "readonly"
+      end
+    end
+
+    # Check if Restaurant should be 'readonly' - 'disabled' required to lock dropdowns
+    def read_only_disabled
+      if !(@restaurant.creator_id == @review.user_id) 
+         "disabled"
       end
     end
 
