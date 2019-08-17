@@ -17,10 +17,13 @@
         <div class="card-body d-flex flex-column">
           <p><strong><%= review.user.username %>:</strong></p>
           <p><strong>Rating: <%= review.rating %> out of 5</strong></p>
-          <p class="card-text"><%= review.recommendation %></p>
-          <% if @user.id == review.user_id %>
-          <a href="/reviews/<%= review.id %>/edit" class="btn btn-primary mt-auto" role="button">Edit</a>
-          <% end %>
+          <p class="card-text "><%= review.recommendation %></p>
+          <div class="d-inline-flex text-nowrap">  
+            <% if @user.id == review.user_id %>
+            <a href="/reviews/<%= review.id %>/edit" class="btn btn-primary mt-auto mr-1" role="button">Edit or Delete</a>
+            <!--<a href="/reviews/<%= review.id %>/edit" class="btn btn-secondary mt-auto" role="button">Delete</a>-->
+            <% end %>
+          </div>
         </div>
       </div>
       </div>

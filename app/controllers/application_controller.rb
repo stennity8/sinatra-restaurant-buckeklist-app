@@ -68,6 +68,11 @@ class ApplicationController < Sinatra::Base
       end
       @bucketlist
     end
+
+    def no_access
+      flash[:message] = "You do not have access to that page."
+      redirect '/'
+    end
   end
 
 end

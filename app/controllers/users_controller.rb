@@ -8,8 +8,7 @@ class UsersController < ApplicationController
       @user_restaurants = @user.restaurants
       @user_reviews = @user.reviews
     else
-      flash[:message] = "You do not have access to that page."
-      redirect '/'
+      no_access
     end
     # binding.pry
     
@@ -23,8 +22,7 @@ class UsersController < ApplicationController
     if @user == User.find_by_slug(params[:slug])
       @bucketlist = Bucketlist.create(user_id: @user.id, restaurant_id: params[:bucketlist])
     else
-      flash[:message] = "You do not have access to that page."
-      redirect '/'
+      no_access
     end
 
     redirect "/user/#{@user.slug}"

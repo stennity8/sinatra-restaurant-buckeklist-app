@@ -102,7 +102,6 @@ class ReviewsController < ApplicationController
     # Verify if Restaurant was created by user or if it will be uneditable
     @review = Review.find(params[:id])
     @restaurant = @review.restaurant
-    #@restaurant.creator_id == @review.user_id ? @read_only = false : @read_only = true
 
     erb :"/reviews/edit"
   end
@@ -122,18 +121,25 @@ class ReviewsController < ApplicationController
     redirect "/reviews/#{@review.id}"
   end
 
-    # GET: /reviews/5
-    get "/reviews/:id" do
-      logged_in_verification
-      @user = current_user(session)
-      @review = Review.find(params[:id])
-      
-      erb :"/reviews/show"
-    end
+  # GET: /reviews/5
+  get "/reviews/:id" do
+    logged_in_verification
+    @user = current_user(session)
+    @review = Review.find(params[:id])
+    
+    erb :"/reviews/show"
+  end
   
-
   # DELETE: /reviews/5/delete
   delete "/reviews/:id/delete" do
+    logged_in_verification
+
+    @review = Review.find(params[:id])
+
+    if @user.id = @review.user_id
+      @review.destroy
+    end
+
     redirect "/reviews"
   end
 end
