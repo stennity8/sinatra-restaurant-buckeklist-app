@@ -20,7 +20,7 @@
 
 
 
-<body>
+<body class="container-fluid">
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,20 +67,22 @@
       <% end %>
     </div>
   </nav>
-  <div class="wrapper">
+  <div class="row h-100 align-items-center">
+    <div class="wrapper">
 
-    <% flash.keys.each do |type| %>
-    <div data-alert class="flash <%= type %> alert-box radius alert alert-danger" role="alert">
-      <%= flash[type] %>
+      <% flash.keys.each do |type| %>
+      <div data-alert class="flash <%= type %> alert-box radius alert alert-danger" role="alert">
+        <%= flash[type] %>
+      </div>
+      <% end %>
+
+
+      <%= yield %>
+
+      <footer class="branding">
+        <small>&copy; 2019 <strong>SinatraRestaurantBucketlistApp</strong></small>
+      </footer>
     </div>
-    <% end %>
-
-
-    <%= yield %>
-
-    <footer class="branding">
-      <small>&copy; 2019 <strong>SinatraRestaurantBucketlistApp</strong></small>
-    </footer>
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
