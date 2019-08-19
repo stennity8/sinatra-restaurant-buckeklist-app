@@ -175,11 +175,11 @@ div.row {
 }
 
 div.card-header {
-  background-color: #f0f3f6;
+  background-color: rgb(221, 221, 224);
 }
 
 h5.card-header {
-  background-color: #f0f3f6;
+  background-color: rgb(221, 221, 224);
 }
 
 .navbar-text span {

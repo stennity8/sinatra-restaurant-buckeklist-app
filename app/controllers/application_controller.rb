@@ -16,6 +16,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+
     # Get current user
     def current_user(session) 
       @user = User.find_by_id(session[:user_id])
@@ -69,6 +70,7 @@ class ApplicationController < Sinatra::Base
       @bucketlist
     end
 
+    # Create 'no access' flash message and redirect to home page
     def no_access
       flash[:message] = "You do not have access to that page."
       redirect '/'

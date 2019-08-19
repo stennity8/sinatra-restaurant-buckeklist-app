@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  # GET: /reviews
+  # Get ALL reviews
   get "/reviews" do
     logged_in_verification
 
@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     erb :"/reviews/index"
   end
 
-  # GET: /reviews/new
+  # Get form for creating new reviews and restaurants
   get "/reviews/new" do
     # Logged in verification
     logged_in_verification
@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     erb :"/reviews/new"
   end
 
-  # This is for existing restaurant reviews coming from bucketlist
+  # This is for creating a review for a restaurant that is in user's bucket list
   get "/reviews/new/:id" do
     # Logged in verification
     logged_in_verification
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     erb :"/reviews/new_bucketlist"
   end
 
-  # This post is for reviews being added from the bucketlist.
+  # This post is for new reviews being added to restaurant from the user's bucketlist.
   post "/reviews/:id" do
     # Logged in verification
     logged_in_verification
@@ -55,7 +55,7 @@ class ReviewsController < ApplicationController
     redirect "/user/#{@user.slug}"
   end
 
-  # POST: /reviews
+  # This post is for creating new reviews and/or restaurants
   post "/reviews" do
     # Logged in verification
     logged_in_verification
@@ -95,7 +95,7 @@ class ReviewsController < ApplicationController
   end
 
 
-  # GET: /reviews/5/edit
+  # Get edit form for existing reviews
   get "/reviews/:id/edit" do
 
     logged_in_verification
@@ -106,7 +106,7 @@ class ReviewsController < ApplicationController
     erb :"/reviews/edit"
   end
 
-  # PATCH: /reviews/5
+  # Update existing review
   patch "/reviews/:id" do
     @review = Review.find(params[:id])
     @restaurant = @review.restaurant
@@ -121,7 +121,7 @@ class ReviewsController < ApplicationController
     redirect "/reviews/#{@review.id}"
   end
 
-  # GET: /reviews/5
+  # Show specific review
   get "/reviews/:id" do
     logged_in_verification
     @user = current_user(session)
@@ -130,7 +130,7 @@ class ReviewsController < ApplicationController
     erb :"/reviews/show"
   end
   
-  # DELETE: /reviews/5/delete
+  # Delete existing review
   delete "/reviews/:id/delete" do
     logged_in_verification
 

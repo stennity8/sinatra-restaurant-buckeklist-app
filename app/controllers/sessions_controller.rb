@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+  # Get login form
   get '/login' do
     if is_logged_in?(session)
       flash[:message] = "You are already logged in."
@@ -7,6 +9,7 @@ class SessionsController < ApplicationController
       erb :"/sessions/new"
   end
 
+  # Log user in or redirect with error message
   post '/login' do
     @user = User.find_by(username: params[:username])
 
@@ -20,6 +23,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # Log user out
   get '/logout' do
     if is_logged_in?(session)
       session.destroy

@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-  # GET: /restaurants
+  # GET ALL restaurants
   get "/restaurants" do
     logged_in_verification
     @restaurants = Restaurant.all
@@ -12,17 +12,7 @@ class RestaurantsController < ApplicationController
     erb :"/restaurants/index"
   end
 
-  # GET: /restaurants/new
-  get "/restaurants/new" do
-    erb :"/restaurants/new"
-  end
-
-  # POST: /restaurants
-  post "/restaurants" do
-    redirect "/restaurants"
-  end
-
-  # GET: /restaurants/5
+  # GET specific restaurant by ID
   get "/restaurants/:id" do
     logged_in_verification
     
@@ -30,20 +20,5 @@ class RestaurantsController < ApplicationController
     @reviews = @restaurant.reviews
 
     erb :"/restaurants/show"
-  end
-
-  # GET: /restaurants/5/edit
-  get "/restaurants/:id/edit" do
-    erb :"/restaurants/edit"
-  end
-
-  # PATCH: /restaurants/5
-  patch "/restaurants/:id" do
-    redirect "/restaurants/:id"
-  end
-
-  # DELETE: /restaurants/5/delete
-  delete "/restaurants/:id/delete" do
-    redirect "/restaurants"
   end
 end

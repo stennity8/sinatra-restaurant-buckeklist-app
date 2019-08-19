@@ -2,6 +2,7 @@
 
 <div class="container-flu">
   <div class="row">
+    <!--Create card for each review of restaurant-->
     <% @reviews.each do |review| %>
     <div class="col-xs-12 col-md-6 col-lg-4 mt-3">
       <div class="card h-100 w-100">
@@ -10,7 +11,7 @@
           <p><strong>Rating: <%= review.rating %> out of 5</strong></p>
           <p class="card-text"><%= review.recommendation %></p>
           <% if review.user_id == current_user(session).id %>
-            <a href="/reviews/<%= review.id %>/edit" class="btn btn-primary mt-auto" role="button">Edit or Delete</a>
+          <a href="/reviews/<%= review.id %>/edit" class="btn btn-primary mt-auto" role="button">Edit or Delete</a>
           <% end %>
         </div>
       </div>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  # Show user's bucket list and reviews
   get '/user/:slug' do
     logged_in_verification
 
@@ -15,10 +16,11 @@ class UsersController < ApplicationController
     erb :"/users/show"
   end
 
+  # Add restaurant to user's bucket list
   post '/user/:slug' do
     logged_in_verification
     
-    # Verify user is authorized to add to bucketlist
+    # Verify user is authorized to add to bucket list
     if @user == User.find_by_slug(params[:slug])
       @bucketlist = Bucketlist.create(user_id: @user.id, restaurant_id: params[:bucketlist])
     else
@@ -28,6 +30,7 @@ class UsersController < ApplicationController
     redirect "/user/#{@user.slug}"
   end
   
+  # Get register form
   get '/register' do
     if is_logged_in?(session)
       flash[:message] = "You are already logged in."
@@ -37,6 +40,7 @@ class UsersController < ApplicationController
       erb :"/users/new"
   end
 
+  # Register new user
   post '/register' do
     # Check password and confirm passwords match.  Redirect if they do not match.
     if params[:user][:password] != params[:confirm_password]
