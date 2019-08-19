@@ -13,7 +13,8 @@
               <address>
                 <%= restaurant.address %><br>
                 <%= restaurant.city %>, <%= restaurant.state %> <%= restaurant.zip_code %><br>
-              </address>
+              </address><br>
+            Cuisine - <%= restaurant.cuisine.capitalize %>
             </h6>
           </div>
            <div class="card-body d-flex flex-column">
@@ -39,7 +40,8 @@
             <address>
               <%= review.restaurant.address %><br>
               <%= review.restaurant.city %>, <%= review.restaurant.state %> <%= review.restaurant.zip_code %><br>
-            </address>
+            </address><br>
+            Cuisine - <%= review.restaurant.cuisine.capitalize %>
           </h6>
         </div>
         <div class="card-body d-flex flex-column">

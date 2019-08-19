@@ -12,7 +12,8 @@
             <address>
               <%= restaurant.address %><br>
               <%= restaurant.city %>, <%= restaurant.state %> <%= restaurant.zip_code %><br>
-            </address>
+            </address><br>
+            Cuisine - <%= restaurant.cuisine.capitalize %>
           </h6>
           <div class="d-inline-flex text-nowrap">
             <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary mt-auto mr-1" role="button">Reviews</a>
