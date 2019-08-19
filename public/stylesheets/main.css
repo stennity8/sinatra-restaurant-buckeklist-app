@@ -177,13 +177,13 @@ div.row {
 div.card-header {
   /* background-color: rgb(221, 221, 224); */
   background: rgb(255,162,0);
-  background: linear-gradient(70deg, rgba(255,162,0,1) 68%, rgba(179,113,0,1) 91%);
+  background: linear-gradient(70deg, rgba(255,162,0,1) 78%, rgba(179,113,0,1) 95%);
 }
 
 h5.card-header {
   /* background-color: rgb(221, 221, 224); */
   background: rgb(255,162,0);
-  background: linear-gradient(106deg, rgba(255,162,0,1) 68%, rgba(179,113,0,1) 91%);
+  background: linear-gradient(106deg, rgba(255,162,0,1) 78%, rgba(179,113,0,1) 95%);
 }
 
 .navbar-text span {
@@ -192,4 +192,11 @@ h5.card-header {
 
 .home {
   border-bottom: none;
+}
+
+.welcome-container {
+  background: rgb(255,162,0);
+  background: linear-gradient(106deg, rgba(255,162,0,1) 78%, rgba(179,113,0,1) 95%);
+  padding: 15px;
+  border-radius: 10px;
 }
