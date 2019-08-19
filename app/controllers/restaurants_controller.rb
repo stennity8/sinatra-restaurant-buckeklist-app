@@ -18,6 +18,8 @@ class RestaurantsController < ApplicationController
     
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
+    @user_slug = User.find(session[:user_id]).slug
+    bucketlist_restaurants
 
     erb :"/restaurants/show"
   end

@@ -34,7 +34,7 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
-    border-radius: 5%;
+    border-radius: 20px;
   }
 
   h1 {
@@ -175,11 +175,15 @@ div.row {
 }
 
 div.card-header {
-  background-color: rgb(221, 221, 224);
+  /* background-color: rgb(221, 221, 224); */
+  background: rgb(255,162,0);
+  background: linear-gradient(106deg, rgba(255,162,0,1) 37%, rgba(179,113,0,1) 91%);
 }
 
 h5.card-header {
-  background-color: rgb(221, 221, 224);
+  /* background-color: rgb(221, 221, 224); */
+  background: rgb(255,162,0);
+  background: linear-gradient(106deg, rgba(255,162,0,1) 37%, rgba(179,113,0,1) 91%);
 }
 
 .navbar-text span {
