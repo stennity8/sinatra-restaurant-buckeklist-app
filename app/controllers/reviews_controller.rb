@@ -6,6 +6,8 @@ class ReviewsController < ApplicationController
 
     @user = current_user(session)
     @reviews = Review.all
+    @user_slug = User.find(session[:user_id]).slug
+    bucketlist_restaurants
 
     erb :"/reviews/index"
   end
