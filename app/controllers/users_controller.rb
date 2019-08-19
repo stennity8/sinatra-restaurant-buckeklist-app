@@ -1,34 +1,4 @@
 class UsersController < ApplicationController
-
-  # Show user's bucket list and reviews
-  get '/user/:slug' do
-    logged_in_verification
-
-    # Verify user is authorized to access these reviews
-    if @user == User.find_by_slug(params[:slug])
-      @user_restaurants = @user.restaurants
-      @user_reviews = @user.reviews
-    else
-      no_access
-    end
-    # binding.pry
-    
-    erb :"/users/show"
-  end
-
-  # Add restaurant to user's bucket list
-  post '/user/:slug' do
-    logged_in_verification
-    
-    # Verify user is authorized to add to bucket list
-    if @user == User.find_by_slug(params[:slug])
-      @bucketlist = Bucketlist.create(user_id: @user.id, restaurant_id: params[:bucketlist])
-    else
-      no_access
-    end
-
-    redirect "/user/#{@user.slug}"
-  end
   
   # Get register form
   get '/register' do
@@ -61,5 +31,20 @@ class UsersController < ApplicationController
       redirect "/reviews"
     end
   end
+
+    # Show user's bucket list and reviews
+    get '/user/:slug' do
+      logged_in_verification
+  
+      # Verify user is authorized to access these reviews
+      if @user == User.find_by_slug(params[:slug])
+        @user_restaurants = @user.restaurants
+        @user_reviews = @user.reviews
+      else
+        no_access
+      end
+      
+      erb :"/users/show"
+    end
 
 end

@@ -9,4 +9,5 @@ use SessionsController
 use ReviewsController
 use RestaurantsController
 use UsersController
+use BucketlistsController
 run ApplicationController
