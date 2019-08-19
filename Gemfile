@@ -4,6 +4,7 @@ ruby '2.6.1'
 gem 'sinatra'
 gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'pg'
 gem 'rake'
 gem 'require_all'
 gem 'sqlite3', '~> 1.3.6', :group => :development
@@ -13,7 +14,7 @@ gem 'pry', :group => :development
 gem 'bcrypt'
 gem 'tux', :group => :development
 gem 'sinatra-flash'
-gem 'pg'
+
 
 group :test do
   gem 'rspec'
