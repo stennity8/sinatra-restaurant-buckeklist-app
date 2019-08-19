@@ -22,10 +22,11 @@
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
+    margin: 0;
   }
 
   .wrapper {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.95);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -33,6 +34,7 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+    border-radius: 5%;
   }
 
   h1 {
@@ -170,4 +172,12 @@ div.row {
 
 .container-fluid {
   padding: 0;
+}
+
+div.card-header {
+  background-color: #f0f3f6;
+}
+
+h5.card-header {
+  background-color: #f0f3f6;
 }
