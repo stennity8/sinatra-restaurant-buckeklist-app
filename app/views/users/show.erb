@@ -17,9 +17,13 @@
             Cuisine - <%= restaurant.cuisine.capitalize %>
             </h6>
           </div>
-           <div class="card-body d-flex flex-column">
+           <div class="card-body d-inline-flex">
           <% if @user == current_user(session) %>
-            <a href="/reviews/new/<%= restaurant.id %>" class="btn btn-primary mt-auto" role="button">Create Review</a>
+            <a href="/reviews/new/<%= restaurant.id %>" class="btn btn-primary mt-auto mr-1" role="button">Create Review</a>
+            <form action="/reviews/<%= bucketlist.id %>/bucketlist" method="post">
+              <input id="hidden" type="hidden" name="_method" value="delete">
+              <button class="btn btn-secondary mt-auto" type="submit">Remove from Bucket List</button>
+            </form>            
           <% end %>
         </div>
         </div>
@@ -56,4 +60,3 @@
     <% end %>
   </div>
 </div>
-<!-- Bucket List Coming Soon -->

@@ -144,4 +144,14 @@ class ReviewsController < ApplicationController
 
     redirect "/reviews"
   end
+
+  # Delete bucket list
+  delete "/reviews/:id/bucketlist" do
+    logged_in_verification
+    
+    bucketlist = Bucketlist.find(params[:id])
+    bucketlist.destroy
+
+    redirect "/user/#{@user.slug}"
+  end
 end
