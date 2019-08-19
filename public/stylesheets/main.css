@@ -95,7 +95,7 @@
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    width: auto;
+    /* width: auto; */
   }
 
   .content, .sidebar {

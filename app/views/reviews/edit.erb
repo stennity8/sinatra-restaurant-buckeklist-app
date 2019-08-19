@@ -2,23 +2,24 @@
 <form action="/reviews/<%= @review.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
-  <div class="form-row">  
+  <div class="form-row">
     <div class="form-group col-md-9">
       <label for="inputName">Restaurant's Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]" value="<%= @restaurant.name %>" <%= read_only %>>
+      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]"
+        value="<%= @restaurant.name %>" <%= read_only %>>
     </div>
 
     <div class="form-group col-md-3">
       <label for="inputCuisine">Cuisine</label>
       <select id="inputCuisine" class="form-control" name="restaurant[cuisine]" <%= read_only_disabled %>>
-      <!--Dropdown preselection iteration-->
+        <!--Dropdown preselection iteration-->
         <% cuisine_array = ["american", "chinese", "french", "greek", "indian", "italian", "japanese", "mediterranean", "mexican", "spanish", "thai", "other"]%>
         <% cuisine_array.each do |cuisine| %>
-          <% if cuisine == @restaurant.cuisine %>
-            <option value="<%= @restaurant.cuisine %>" selected><%= @restaurant.cuisine.capitalize %></option>
-          <% else %>
-            <option value="<%= cuisine %>" selected><%= cuisine.capitalize %></option>
-          <% end %>
+        <% if cuisine == @restaurant.cuisine %>
+        <option value="<%= @restaurant.cuisine %>" selected><%= @restaurant.cuisine.capitalize %></option>
+        <% else %>
+        <option value="<%= cuisine %>"><%= cuisine.capitalize %></option>
+        <% end %>
         <% end %>
       </select>
     </div>
@@ -26,35 +27,38 @@
 
   <div class="form-group">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="restaurant[address]" value="<%= @restaurant.address %>" <%= read_only %>>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="restaurant[address]"
+      value="<%= @restaurant.address %>" <%= read_only %>>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity" name="restaurant[city]" value="<%= @restaurant.city %>" <%= read_only %>>
+      <input type="text" class="form-control" id="inputCity" name="restaurant[city]" value="<%= @restaurant.city %>"
+        <%= read_only %>>
     </div>
 
     <div class="form-group col-md-4">
       <label for="inputState">State</label>
       <select id="inputState" class="form-control" name="restaurant[state]" <%= read_only_disabled %>>
-      <!--Dropdown preselection iteration-->
-              <% state_array = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",	"FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", \
-               "LA", "MA", "MD", "ME", "MI", "MN", "MO" "MS", "MT", "NC", "NE", "NH", "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI", \
+        <!--Dropdown preselection iteration-->
+        <% state_array = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",	"FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", \
+               "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "NE", "NH", "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI", \
                "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY"]%>
         <% state_array.each do |state| %>
-          <% if state == @restaurant.state %>
-            <option value="<%= @restaurant.state %>" selected><%= @restaurant.state %></option>
-          <% else %>
-            <option value="<%= state %>"><%= state %></option>
-          <% end %>
+        <% if state == @restaurant.state %>
+        <option value="<%= @restaurant.state %>" selected><%= @restaurant.state %></option>
+        <% else %>
+        <option value="<%= state %>"><%= state %></option>
+        <% end %>
         <% end %>
       </select>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputZip">Zip</label>
-      <input class="form-control" id="inputZip" name="restaurant[zip_code]" type="text" inputmode="numeric" pattern="(\d{5}([\-]\d{4})?)" value="<%= @restaurant.zip_code %>" <%= read_only %>>
+      <input class="form-control" id="inputZip" name="restaurant[zip_code]" type="text" inputmode="numeric"
+        pattern="(\d{5}([\-]\d{4})?)" value="<%= @restaurant.zip_code %>" <%= read_only %>>
     </div>
   </div>
 
@@ -62,13 +66,13 @@
     <div class="form-group form-inline col-md-3">
       <label for="inputRating">Rating</label><br>
       <select id="inputRating" class="form-control" name="review[rating]">
-      <!--Dropdown preselection iteration-->
+        <!--Dropdown preselection iteration-->
         <% (1..5).each do |num| %>
-          <% if num == @review.rating %>
-            <option value="<%= num.to_s %>" selected><%= num %></option>
-          <%  else %>
-            <option value="<%= num.to_s %>"><%= num %></option>
-          <% end %>
+        <% if num == @review.rating %>
+        <option value="<%= num.to_s %>" selected><%= num %></option>
+        <%  else %>
+        <option value="<%= num.to_s %>"><%= num %></option>
+        <% end %>
         <% end %>
       </select>
     </div>
@@ -76,35 +80,38 @@
 
   <div class="form-group">
     <label for="inputRecommendation">Review and Food/Drink Recommendations</label>
-    <textarea class="form-control" id="inputRecommendation" rows="3" name="review[recommendation]"><%= @review.recommendation %></textarea>
+    <textarea class="form-control" id="inputRecommendation" rows="3"
+      name="review[recommendation]"><%= @review.recommendation %></textarea>
   </div>
 
   <div class="form-group d-inline-flex text-nowrap">
-  <button type="submit" class="btn btn-primary mr-3">Update Review</button>
-  </form>
+    <button type="submit" class="btn btn-primary mr-3">Update Review</button>
+</form>
 
-  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">Delete Review</button>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Delete Review</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to delete this review?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <form action="/reviews/<%= @review.id %>/delete" method="post">
-            <input id="hidden" type="hidden" name="_method" value="delete">
-            <button type="submit" class="btn btn-success">Yes</button>
-          </form>
-        </div>
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">Delete
+  Review</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete Review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this review?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <form action="/reviews/<%= @review.id %>/delete" method="post">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-success">Yes</button>
+        </form>
       </div>
     </div>
-    </div>
   </div>
+</div>
+</div>

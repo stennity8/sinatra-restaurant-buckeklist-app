@@ -1,22 +1,23 @@
 <h1>Create Review for Bucket List Restaurant</h1>
 <form action="/reviews/<%= @restaurant.id %>" method="post">
-  <div class="form-row">  
+  <div class="form-row">
     <div class="form-group col-md-9">
       <label for="inputName">Restaurant's Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]" value="<%= @restaurant.name %>" readonly>
+      <input type="text" class="form-control" id="inputName" placeholder="Name" name="restaurant[name]"
+        value="<%= @restaurant.name %>" readonly>
     </div>
 
     <div class="form-group col-md-3">
       <label for="inputCuisine">Cuisine</label>
       <select id="inputCuisine" class="form-control" name="restaurant[cuisine]" disabled>
-      <!--Dropdown preselection iteration-->
+        <!--Dropdown preselection iteration-->
         <% cuisine_array = ["american", "chinese", "french", "greek", "indian", "italian", "japanese", "mediterranean", "mexican", "spanish", "thai", "other"]%>
         <% cuisine_array.each do |cuisine| %>
-          <% if cuisine == @restaurant.cuisine %>
-            <option value="<%= @restaurant.cuisine %>" selected><%= @restaurant.cuisine.capitalize %></option>
-          <% else %>
-            <option value="<%= cuisine %>" selected><%= cuisine.capitalize %></option>
-          <% end %>
+        <% if cuisine == @restaurant.cuisine %>
+        <option value="<%= @restaurant.cuisine %>" selected><%= @restaurant.cuisine.capitalize %></option>
+        <% else %>
+        <option value="<%= cuisine %>"><%= cuisine.capitalize %></option>
+        <% end %>
         <% end %>
       </select>
     </div>
@@ -24,38 +25,41 @@
 
   <div class="form-group">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="restaurant[address]" value="<%= @restaurant.address %>" readonly>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="restaurant[address]"
+      value="<%= @restaurant.address %>" readonly>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity" name="restaurant[city]" value="<%= @restaurant.city %>" readonly>
+      <input type="text" class="form-control" id="inputCity" name="restaurant[city]" value="<%= @restaurant.city %>"
+        readonly>
     </div>
 
     <div class="form-group col-md-4">
       <label for="inputState">State</label>
       <select id="inputState" class="form-control" name="restaurant[state]" disabled>
-      <!--Dropdown preselection iteration-->
-              <% state_array = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",	"FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", \
+        <!--Dropdown preselection iteration-->
+        <% state_array = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",	"FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", \
                "LA", "MA", "MD", "ME", "MI", "MN", "MO" "MS", "MT", "NC", "NE", "NH", "NJ", "NM", "NV", "NY", "ND", "OH", "OK", "OR", "PA", "RI", \
                "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY"]%>
         <% state_array.each do |state| %>
-          <% if state == @restaurant.state %>
-            <option value="<%= @restaurant.state %>" selected><%= @restaurant.state %></option>
-          <% else %>
-            <option value="<%= state %>"><%= state %></option>
-          <% end %>
+        <% if state == @restaurant.state %>
+        <option value="<%= @restaurant.state %>" selected><%= @restaurant.state %></option>
+        <% else %>
+        <option value="<%= state %>"><%= state %></option>
+        <% end %>
         <% end %>
       </select>
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputZip">Zip</label>
-      <input class="form-control" id="inputZip" name="restaurant[zip_code]" type="text" inputmode="numeric" pattern="(\d{5}([\-]\d{4})?)" value="<%= @restaurant.zip_code %>" readonly>
+      <input class="form-control" id="inputZip" name="restaurant[zip_code]" type="text" inputmode="numeric"
+        pattern="(\d{5}([\-]\d{4})?)" value="<%= @restaurant.zip_code %>" readonly>
     </div>
-         <!--This is a hidden form value to differentiate existing restaurants from new restaurants. -->
-     <input type="hidden" name="restaurant[id]" value="<%= @restaurant.id %>">
+    <!--This is a hidden form value to differentiate existing restaurants from new restaurants. -->
+    <input type="hidden" name="restaurant[id]" value="<%= @restaurant.id %>">
   </div>
 
 
@@ -78,6 +82,6 @@
   </div>
 
   <div class="form-group">
-  <button type="submit" class="btn btn-primary">Create Review</button>
+    <button type="submit" class="btn btn-primary">Create Review</button>
   </div>
 </form>
