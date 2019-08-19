@@ -181,3 +181,11 @@ div.card-header {
 h5.card-header {
   background-color: #f0f3f6;
 }
+
+.navbar-text span {
+  color: #fff;
+}
+
+.home {
+  border-bottom: none;
+}

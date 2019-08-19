@@ -2,9 +2,16 @@
   <div>
     <h1>Welcome to the Restaurant Bucket List</h1>
 
-    <div class="content">
+    <% if is_logged_in?(session) %>
 
+    <% else %>
+    <div class="container">
+      <h2 class="home">Register for free and start creating your bucket list.</h2>
+        <a href="/register" class="btn btn-primary mb-3" role="button">Register</a>
+      <h2 class="home">Already registered? Then log in below.</h2>
+        <a href="/login" class="btn btn-primary mb-3-auto" role="button">Login</a>
     </div>
+    <% end %>
 
   </div>
 </div>
