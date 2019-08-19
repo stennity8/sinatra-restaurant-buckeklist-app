@@ -25,7 +25,7 @@
 
           <!--Make sure that the current user did not create a review or already have the restaurant on their bucketlist-->
           <% elsif !@user.restaurants.ids.include?(review.restaurant.id) && !@bucketlist.include?(review.restaurant.id)%>
-          <form action="/bucketlists/<%= @user_slug %>" method="post">
+          <form class="d-flex flex-column mt-auto" action="/bucketlists/<%= @user_slug %>" method="post">
             <button class="btn btn-secondary mt-auto" name="bucketlist" type="submit"
               value="<%= review.restaurant.id %>">Add
               to Bucket List</button>
