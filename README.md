@@ -1,6 +1,6 @@
 # Restaurant Bucket List
 ___
-### Restaurant Bucket List is a Sinatra app that allows users to create reviews of restaurants, see other users reviews <br> of restaurants, and to add restaurants to a Bucket List.  Once a user visits a restaurant on their Bucket List they can <br> they can then create a review for that restaurant and it will be removed from their Bucket List.
+### Restaurant Bucket List is a Sinatra app that allows users to create reviews of restaurants, see other users reviews of restaurants, and to add restaurants to a Bucket List.  Once a user visits a restaurant on their Bucket List they can they can then create a review for that restaurant and it will be removed from their Bucket List.
 ___
 
 ### Registration
