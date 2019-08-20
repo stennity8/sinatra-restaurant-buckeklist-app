@@ -44,7 +44,7 @@ class ApplicationController < Sinatra::Base
         flash[:message] = "You must be logged in to access that page."
         redirect "/login"
       end
-    end
+    end@
 
     # Check if Restaurant should be 'readonly' 
     def read_only

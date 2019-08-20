@@ -34,10 +34,11 @@ class ReviewsController < ApplicationController
     # Logged in verification
     logged_in_verification
 
-    # Create review verify it is valid. Redirect if invalid.
+    # Create review. 
     review = Review.new(params[:review])
     restaurant = Restaurant.find(params[:id])
     
+    #verify review is valid. Redirect if invalid.
     if review.valid?
       review.restaurant_id = restaurant.id
       review.user_id = @user.id
@@ -62,7 +63,7 @@ class ReviewsController < ApplicationController
     # Logged in verification
     logged_in_verification
 
-    # Create review and restaurant and verify they are valid. Redirect if invalid.
+    # Create review and restaurant. 
     review = Review.new(params[:review])
     # Check if this is an existing restaurant.
     if params[:restaurant][:creator_id].empty?
@@ -71,7 +72,7 @@ class ReviewsController < ApplicationController
       restaurant = Restaurant.find(params[:restaurant][:id])
     end
 
-    
+    # Verify review and restaurant are valid. Redirect if invalid.
     if review.valid? && restaurant.valid?
       restaurant.creator_id = current_user(session).id
       restaurant.save
@@ -110,14 +111,21 @@ class ReviewsController < ApplicationController
 
   # Update existing review
   patch "/reviews/:id" do
+    logged_in_verification
     @review = Review.find(params[:id])
     @restaurant = @review.restaurant
+
     # Check if user has access to update restaurant
-    if read_only
-      @review.update(params[:review])
+    if @user.id == @review.user_id  
+      # Update if user is the review creator 
+      if !(@restaurant.creator_id == @review.user_id)
+        @review.update(params[:review])
+      else
+        @restaurant.update(params[:restaurant])
+        @review.update(params[:review])
+      end
     else
-      @restaurant.update(params[:restaurant])
-      @review.update(params[:review])
+      no_access
     end
 
     redirect "/reviews/#{@review.id}"
@@ -135,11 +143,13 @@ class ReviewsController < ApplicationController
   # Delete existing review
   delete "/reviews/:id/delete" do
     logged_in_verification
-
     @review = Review.find(params[:id])
 
-    if @user.id = @review.user_id
+    # Check if user has access to update restaurant
+    if @user.id == @review.user_id
       @review.destroy
+    else
+      no_access
     end
 
     redirect "/reviews"
