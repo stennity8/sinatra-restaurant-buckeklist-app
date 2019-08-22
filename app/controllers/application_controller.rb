@@ -60,7 +60,7 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    # Build array of bucketlist restaurants
+    # Build array of current user's bucketlist restaurants
     def bucketlist_restaurants
       @bucketlist = []
       @user = current_user(session)
