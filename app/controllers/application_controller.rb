@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     # Get current user
-    def current_user(session) 
+    def current_user(sessions) 
       @user = User.find_by_id(session[:user_id])
     end
   
@@ -74,6 +74,12 @@ class ApplicationController < Sinatra::Base
     def no_access
       flash[:message] = "You do not have access to that page."
       redirect '/'
+    end
+
+    def access_verification(obj)
+      if @user.id != obj.user_id
+        no_access
+      end
     end
   end
 

@@ -105,8 +105,11 @@ class ReviewsController < ApplicationController
     # Verify if Restaurant was created by user or if it will be uneditable
     @review = Review.find(params[:id])
     @restaurant = @review.restaurant
-
-    erb :"/reviews/edit"
+    if @review.user_id != current_user(session).id
+      redirect "/"
+    else
+      erb :"/reviews/edit"
+    end
   end
 
   # Update existing review
@@ -116,16 +119,13 @@ class ReviewsController < ApplicationController
     @restaurant = @review.restaurant
 
     # Check if user has access to update restaurant
-    if @user.id == @review.user_id  
-      # Update if user is the review creator 
-      if !(@restaurant.creator_id == @review.user_id)
-        @review.update(params[:review])
-      else
-        @restaurant.update(params[:restaurant])
-        @review.update(params[:review])
-      end
+    access_verification(@review)
+ 
+    if !(@restaurant.creator_id == @review.user_id)
+      @review.update(params[:review])
     else
-      no_access
+      @restaurant.update(params[:restaurant])
+      @review.update(params[:review])
     end
 
     redirect "/reviews/#{@review.id}"
@@ -146,11 +146,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     # Check if user has access to update restaurant
-    if @user.id == @review.user_id
-      @review.destroy
-    else
-      no_access
-    end
+    access_verification(@review)
+    @review.destroy
 
     redirect "/reviews"
   end
