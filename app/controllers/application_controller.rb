@@ -18,7 +18,8 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     # Get current user
-    def current_user(sessions) 
+    # TODO:  Passing session into function is not neccessary.  Can delete and update code.
+    def current_user(session) 
       @user = User.find_by_id(session[:user_id])
     end
   
