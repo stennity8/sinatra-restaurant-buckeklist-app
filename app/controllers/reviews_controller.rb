@@ -121,7 +121,7 @@ class ReviewsController < ApplicationController
     # Check if user has access to update restaurant
     access_verification(@review)
  
-    if !(@restaurant.creator_id == @review.user_id)
+    if @restaurant.creator_id != @review.user_id
       @review.update(params[:review])
     else
       @restaurant.update(params[:restaurant])
