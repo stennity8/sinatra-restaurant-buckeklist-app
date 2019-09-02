@@ -6,6 +6,8 @@
 
 Heroku link: http://restaurant-bucket-list.herokuapp.com/
 
+Video Walk-through: https://www.youtube.com/watch?v=Yz09D8GWnoE&t=64s
+
 ---
 
 ### Registration
