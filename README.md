@@ -4,7 +4,7 @@
 
 ### Restaurant Bucket List is a Sinatra app that allows users to create reviews of restaurants, see other users reviews of restaurants, and to add restaurants to a Bucket List. Once a user visits a restaurant on their Bucket List they can they can then create a review for that restaurant and it will be removed from their Bucket List.
 
-Heroku link: (http://restaurant-bucket-list.herokuapp.com/)
+Heroku link: http://restaurant-bucket-list.herokuapp.com/
 
 ---
 
